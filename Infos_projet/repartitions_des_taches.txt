@@ -1,0 +1,11 @@
+
+		Répartition des taches
+
+
+* Groupe "professeur" :
+	- Hussam -> Section "Tableau de bord" et "Emploi du temps"
+	- Camille -> Sections "Controle" et "Cours"
+
+* Groupe "etudiant" :
+	-Boris -> Sections "Controle" et "Cours"
+	-Rayane -> Section "Tableau de bord" et "Emploi du temps"
