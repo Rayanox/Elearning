@@ -7,12 +7,18 @@
 </head>
 <body>
 	
-		<img height="175px" width="100%" alt="" src="./resources/Images/BanniereAvecPrenoms.jpg">
-	<div style="margin: 10px"> <!-- Conteneur menu -->		
-		  <ul class="nav nav-pills">
-			  <li class="active"><a href="#">Tableau de Bord</a></li>
-			  <li><a href="#">Emploi du temps</a></li>
-			  <li><a href="#">Cours</a></li>
-			  <li><a href="#">Contrôles</a></li>
-			</ul>
+	<img height="175px" width="100%" alt="" src="./resources/Images/BanniereAvecPrenoms.jpg">
+	<div style="margin: 10px" class=""> <!-- Conteneur menu -->		
+	  <ul class="nav nav-pills col-md-9">
+		  <li class="active"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Tableau de Bord</a></li>
+		  <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Emploi du temps</a></li>
+		  <li><a href="#"><span class="glyphicon glyphicon-book"></span> Cours</a></li>
+		  <li><a href="#"><span class="glyphicon glyphicon-saved"></span> Contrôles</a></li>
+		</ul>
+		
+		<ul class="nav nav-pills pull-right col-md-3">
+		  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Utilisateur</a></li>
+		  <li><a href="#"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
+		</ul>
+		
 	</div>
