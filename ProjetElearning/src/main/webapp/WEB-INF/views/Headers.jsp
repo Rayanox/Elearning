@@ -16,9 +16,10 @@
 		  <li><a href="#"><span class="glyphicon glyphicon-saved"></span> Contrôles</a></li>
 		</ul>
 		
-		<ul class="nav nav-pills pull-right col-md-3">
+		<ul class="nav nav-pills pull-right">
 		  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Utilisateur</a></li>
 		  <li><a href="#"><span class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
 		</ul>
 		
 	</div>
+	<br><br>
