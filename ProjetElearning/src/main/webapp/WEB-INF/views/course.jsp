@@ -18,14 +18,14 @@
 	
 	<div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">RÃ©capitulatif des cours</div>
+  <div class="panel-heading">Récapitulatif des cours</div>
 
   <!-- Table -->
   <table class="table">
-    <tr><th> Titre </th><th> Descriptif </th><th> PrÃ©sentiel </th><th> En ligne </th> </tr>
-	<tr><td> cours1 </td><td> rÃ©sumÃ© du cours </td><td> non </td><td> <button type="button" class="btn btn-info">AccÃ©der au cours</button> </td></tr>
-	<tr><td> cours2 </td><td> rÃ©sumÃ© du cours </td><td> oui</td><td> - </td></tr>
-	<tr><td> Cours3 </td><td> rÃ©sumÃ© du cours </td><td> non </td><td> <button type="button" class="btn btn-info">AccÃ©der au cours</button> </td></tr>
+    <tr><th> Titre </th><th> Descriptif </th><th> Présentiel </th><th> En ligne </th> </tr>
+	<tr><td> cours1 </td><td> résumé du cours </td><td> non </td><td> <button type="button" class="btn btn-info">Accéder au cours</button> </td></tr>
+	<tr><td> cours2 </td><td> résumé du cours </td><td> oui</td><td> - </td></tr>
+	<tr><td> Cours3 </td><td> résumé du cours </td><td> non </td><td> <button type="button" class="btn btn-info">Accéder au cours</button> </td></tr>
   </table>
 </div>
 
