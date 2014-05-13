@@ -23,7 +23,7 @@
 			  <li>
 			    <a href="#">
 			      <span class="badge pull-right">14/05/2014 à 9H</span>
-			      Prochaine évaluation
+			      Prochaine évaluation 
 			    </a>
 			  </li>
 			  <li>

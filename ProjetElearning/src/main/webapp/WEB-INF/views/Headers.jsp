@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link href="./resources/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
 	<link href="./resources/datepicker.css" rel="stylesheet" type="text/css" media="screen" />
@@ -5,12 +7,19 @@
 	
 <title>E-Learning</title>
 </head>
+
+
+
+<% //Initialisation des URL 
+	HttpSession se = pageContext.getSession();
+
+%>
 <body>
 	
 	<img height="175px" width="100%" alt="" src="./resources/Images/BanniereAvecPrenoms.jpg">
 	<div style="margin: 10px" class=""> <!-- Conteneur menu -->		
 	  <ul class="nav nav-pills col-md-9">
-		  <li class="active"><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Tableau de Bord</a></li>
+		  <li class="active"><a href="<% %>"><span class="glyphicon glyphicon-list-alt"></span> Tableau de Bord</a></li>
 		  <li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Emploi du temps</a></li>
 		  <li><a href="#"><span class="glyphicon glyphicon-book"></span> Cours</a></li>
 		  <li><a href="#"><span class="glyphicon glyphicon-saved"></span> Contrôles</a></li>

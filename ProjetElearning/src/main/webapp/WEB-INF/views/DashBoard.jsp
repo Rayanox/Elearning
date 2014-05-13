@@ -32,7 +32,7 @@
 							<td>
 					<table class="table">
 						<tr>
-							<th>Intitulé</th>
+							<th>Intitulé </th>
 							<th>Inscription</th>
 						</tr>
 						<tr>
