@@ -3,16 +3,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <html>
-	<link href="./resources/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="./resources/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="./resources/bootstrap-theme.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="./resources/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="screen" />
+
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<jsp:include page="Headers.jsp"></jsp:include>
 <title>E-Learning</title>
+
+<jsp:include page="Headers.jsp"></jsp:include>
 </head>
+
+
+
 <body>
+
+
+
 	<div class="container">
 	
 	 <h1>Inscription</h1>

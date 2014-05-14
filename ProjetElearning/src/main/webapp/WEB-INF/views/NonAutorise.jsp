@@ -5,17 +5,13 @@
 
 <!DOCTYPE html>
 <html>
-<link href="./resources/bootstrap.css" rel="stylesheet" type="text/css"
-	media="screen" />
-<link href="./resources/bootstrap.min.css" rel="stylesheet"
-	type="text/css" media="screen" />
-<link href="./resources/bootstrap-theme.css" rel="stylesheet"
-	type="text/css" media="screen" />
-<link href="./resources/bootstrap-theme.min.css" rel="stylesheet"
-	type="text/css" media="screen" />
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<jsp:include page="Headers.jsp"></jsp:include>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<jsp:include page="Headers.jsp"></jsp:include>
+</head>
+
+<body>
 
 	<div class="container">
 		<div id="loginbox" style="margin-top: 50px;"

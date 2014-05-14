@@ -12,18 +12,10 @@ public class SessionBean {
  
     private final String id = UUID.randomUUID().toString();
     private String message;
-    private boolean connecte = false;
-    private Status status = Status.Visiteur;
+    private Status status = Status.Etudiant;
     
     
     
-    public boolean isConnecte() {
-    	return connecte;
-    }
-    
-    public void setConnecte(boolean c) {
-    	this.connecte = c;
-    }
     
     
     public String getId() {

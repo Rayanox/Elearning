@@ -24,7 +24,7 @@ import fr.iut.elearning.model.Status;
 public class StudentDashBoard {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	private static int cmp = 0;
+	private final Status statusController = Status.Etudiant;
 	
 	@Autowired
     public SessionBean sessionBean;
@@ -36,6 +36,9 @@ public class StudentDashBoard {
 	public String home(Locale locale, Model model, HttpServletResponse response, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		session.setAttribute("sessionBean", sessionBean);
+
+		if(!Login.VerificationAccesPage(sessionBean, statusController))
+			return "NonAutorise";
 		
 		if(!sessionBean.getStatus().equals(Status.Etudiant)) {
 			return "NonAutorise";
