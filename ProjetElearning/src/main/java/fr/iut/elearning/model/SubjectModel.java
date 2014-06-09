@@ -1,7 +1,15 @@
 package fr.iut.elearning.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.springframework.stereotype.Service;
+
+@Service
 public class SubjectModel {
 	
+	@Id
+	@GeneratedValue
 	private int id;
 	private String subjectName;
 	

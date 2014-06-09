@@ -1,7 +1,15 @@
 package fr.iut.elearning.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.springframework.stereotype.Service;
+
+@Service
 public class TeacherModel {
 	
+	@Id
+	@GeneratedValue
 	private int id;
 	private String firstName;
 	private String lastName;
