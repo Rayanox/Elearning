@@ -23,7 +23,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan("com.spr")
+@ComponentScan("fr.iut.elearning")
 @PropertySource("classpath:application.properties")
 @EnableJpaRepositories("fr.iut.elearning.dao")
 public class WebAppConfig {
