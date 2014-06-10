@@ -6,14 +6,9 @@
 	<link href="./resources/bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
 	<link href="./resources/datepicker.css" rel="stylesheet" type="text/css" media="screen" />
 	<link href="./resources/demo.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="./resources/bootstrap.min.css" rel="stylesheet"
-	type="text/css" media="screen" />
-<link href="./resources/bootstrap-theme.css" rel="stylesheet"
-	type="text/css" media="screen" />
-<link href="./resources/bootstrap-theme.min.css" rel="stylesheet"
-	type="text/css" media="screen" />
+<link href="./resources/bootstrap-theme.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="./resources/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="screen" />
 	
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>E-Learning</title>
 
 
