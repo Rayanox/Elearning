@@ -65,7 +65,7 @@
 			if (!sess.getStatus().equals(Status.Visiteur)) {
 		%>
 		<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-				Utilisateur</a></li>
+				<%= sess.getLogin() %></a></li>
 		<li><a href="<%=url_Deconnexion%>"><span
 				class="glyphicon glyphicon-off"></span> Déconnexion</a></li>
 		<%

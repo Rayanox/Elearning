@@ -78,6 +78,7 @@ public class Login {
 				if (user.getPassword().equals(password)) {
 					connected = true;
 					sessionBean.setStatus(extractStatus(user.getStatus()));
+					sessionBean.setLogin(username);
 				}
 
 				break;

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class SessionBean {
  
     private final String id = UUID.randomUUID().toString();
-    private String message;
+    private String Login;
     private Status status = Status.Visiteur;
     
     
@@ -21,12 +21,12 @@ public class SessionBean {
     public String getId() {
 		return id;
 	}
-    public String getMessage() {
-		return message;
+    public String getLogin() {
+		return Login;
 	}
     
-    public void setMessage(String message) {
-		this.message = message;
+    public void setLogin(String Login) {
+		this.Login = Login;
 	}
     
     public void setStatus(Status status) {

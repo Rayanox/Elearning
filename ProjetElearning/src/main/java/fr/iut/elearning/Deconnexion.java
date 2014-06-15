@@ -35,6 +35,7 @@ public class Deconnexion {
 			if(!Login.VerificationAccesPage(sessionBean, statusController))
 				return "NonAutorise";
 			sessionBean.setStatus(Status.Visiteur);
+			sessionBean.setLogin("");
 			
 			return "home";
 		}
