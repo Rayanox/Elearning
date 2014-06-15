@@ -1,23 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<link href="./resources/bootstrap-glyphicons.css" rel="stylesheet">
-		
-	<script src="./resources/js/jquery-1.11.1.js"></script>
-	<script src="./resources/js/bootstrap.min.js"></script>
-	<script src="./resources/js/bootstrap-datepicker.js"></script>
-	<script src="./resources/js/bootstrap-datepicker.fr.js"></script>
-	<script type="text/javascript">
-		$( document ).ready(function() {
-			$('#datep').datepicker({
-				format: 'dd-mm-yyyy',
-				language: "FR"
-			});
+<link href="./resources/bootstrap-glyphicons.css" rel="stylesheet">
+
+<script src="./resources/js/jquery-1.11.1.js"></script>
+<script src="./resources/js/bootstrap.min.js"></script>
+<script src="./resources/js/bootstrap-datepicker.js"></script>
+<script src="./resources/js/bootstrap-datepicker.fr.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#datep').datepicker({
+			format : 'dd-mm-yyyy',
+			language : "FR"
 		});
-	</script>
-	<jsp:include page="Headers.jsp"></jsp:include>
+	});
+</script>
+<jsp:include page="Headers.jsp"></jsp:include>
 </head>
 
 
@@ -25,56 +25,68 @@
 
 
 	<div class="container">
-	
+
 		<h3>Votre emploi du temps</h3>
 
-	<div class="well">
-		<div class="col-lg-5">
-			<div class="input-group">
-				<span class="input-group-btn">
-					<button class="btn btn-primary" type="button">Semaine précédente</button>
-				</span> 
-<!--    			    <div data-date="12-02-2012" data-date-format="dd-mm-yyyy"> -->
-			    	<input id="datep" class="form-control" type="text" value="">
-<!-- 			    </div> -->
-				<span class="input-group-btn">
-					<button class="btn btn-primary" type="button">Semaine suivante</button>
-				</span>
+		<div class="well">
+			<div class="col-lg-5">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<button class="btn btn-primary" type="button">Semaine
+							précédente</button>
+					</span>
+					<!--    			    <div data-date="12-02-2012" data-date-format="dd-mm-yyyy"> -->
+					<input id="datep" class="form-control" type="text" value="">
+					<!-- 			    </div> -->
+					<span class="input-group-btn">
+						<button class="btn btn-primary" type="button">Semaine
+							suivante</button>
+					</span>
+				</div>
 			</div>
-		</div>
 
-		<a data-toggle="modal" href="#myModal" class="btn btn-success"><span
-			class="glyphicon glyphicon-plus"></span> S'inscrire à un cours</a>
+			<a data-toggle="modal" href="#myModal" class="btn btn-success"><span
+				class="glyphicon glyphicon-plus"></span> S'inscrire à un cours</a>
 
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">S'inscrire à un cours</h4>
-					</div>
-					<div class="modal-body">
-						<form class="form-inline" role="form">
-							<div class="form-group">
-								<label class="sr-only" for="fileInput">Fichier</label> <input
-									type="email" class="form-control" id="fileInput"
-									placeholder="Fichier à ajouter">
-							</div>
-							<button type="submit" class="btn btn-default">Ajouter</button>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-						<button type="button" class="btn btn-primary">Sauvegarder</button>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">&times;</button>
+							<h4 class="modal-title" id="myModalLabel">S'inscrire à un
+								cours</h4>
+						</div>
+						<div class="modal-body">
+							<form class="form-inline" role="form">
+								<div class="form-group">
+									<select class="form-control">
+										<option>Intitulé du cours 1</option>
+										<option>Intitulé du cours 2</option>
+										<option>Intitulé du cours 3</option>
+										<option>Intitulé du cours 4</option>
+										<option>Intitulé du cours 5</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<select class="form-control">
+										<option>Semestre 1</option>
+										<option>Semestre 2</option>
+									</select>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+							<button type="button" class="btn btn-primary">Sauvegarder</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="well well-lg">
+		<div class="well well-lg">
 			<table class="table table-striped table-bordered">
 				<tr>
 					<td></td>

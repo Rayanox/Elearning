@@ -3,8 +3,15 @@ package fr.iut.elearning.model;
 import java.sql.Time;
 import java.util.Date;
 
-public class CoursePlanningModel {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class CoursePlanningModel {
+	
+	@Id
+	@GeneratedValue
 	private int id;
 	private int courseId;
 	private int roomId;

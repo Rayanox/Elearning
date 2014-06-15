@@ -6,6 +6,7 @@
 <head>
 	<link href="./resources/bootstrap-glyphicons.css" rel="stylesheet">
 	<script src="./resources/js/jquery-1.11.1.js"></script>
+	<script src="./resources/js/bootstrap.min.js"></script>
 	<jsp:include page="Headers.jsp"></jsp:include>
 </head>
 
