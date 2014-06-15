@@ -12,7 +12,7 @@ public class SessionBean {
  
     private final String id = UUID.randomUUID().toString();
     private String message;
-    private Status status = Status.Professeur;
+    private Status status = Status.Visiteur;
     
     
     

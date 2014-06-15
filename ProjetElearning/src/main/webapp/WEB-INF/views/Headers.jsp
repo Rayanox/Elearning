@@ -21,7 +21,8 @@
 		url_DashBoard = "./DashBoard";
 		url_Course = "./course";
 		url_Control = "./control";
-	}else if(sess.getStatus().equals(Status.Professeur)) {
+	//}else if(sess.getStatus().equals(Status.Professeur)) {
+	}else{
 		url_EDT = "./profEDT";
 		url_DashBoard = "./profDashBoard";
 		url_Course = "./profCourse";

@@ -40,9 +40,6 @@ public class StudentDashBoard {
 		if(!Login.VerificationAccesPage(sessionBean, statusController))
 			return "NonAutorise";
 		
-		if(!sessionBean.getStatus().equals(Status.Etudiant)) {
-			return "NonAutorise";
-		}
 		
 		
 		return "DashBoard";

@@ -15,6 +15,9 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String login;
+	private String password;
+	private int status;
 	
 	public Integer getId() {
 		return id;
@@ -40,6 +43,23 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	
 }

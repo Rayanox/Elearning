@@ -21,6 +21,12 @@ public class UserController {
 		ModelAndView mav = new ModelAndView("usersList");
 		java.util.List<User> usersList = userService.findAll();
 		mav.addObject("usersList", usersList);
+		
+		for (User user : usersList) {
+			System.out.println("Login = "+user.getLogin());
+			System.out.println("Password = "+user.getPassword());
+		}
+		
 		return mav;
 	}
 
