@@ -111,7 +111,10 @@ public class Login {
 		System.out.println("Statut du bean = "+s.getStatus()+
 				"Statut du controller = "+statusController);
 		
+		
+		
 		if (s.getStatus().equals(statusController)
+				|| (statusController.equals(Status.Inscrit) && (s.getStatus().equals(Status.Etudiant) || s.getStatus().equals(Status.Professeur)))
 				|| s.getStatus().equals(Status.Admin)
 				|| statusController.equals(Status.All)) {
 			return true;

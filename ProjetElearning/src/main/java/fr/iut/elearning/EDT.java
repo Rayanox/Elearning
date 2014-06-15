@@ -16,10 +16,10 @@ import fr.iut.elearning.model.SessionBean;
 import fr.iut.elearning.model.Status;
 
 @Controller
-public class StudentEDT {
+public class EDT {
 
 private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-private final Status statusController = Status.Etudiant;
+private final Status statusController = Status.Inscrit;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -36,7 +36,8 @@ private final Status statusController = Status.Etudiant;
 		if(!Login.VerificationAccesPage(sessionBean, statusController))
 			return "NonAutorise";
 		
-		return "EDT";
+		Status statusSession = sessionBean.getStatus();
+		return statusSession.equals(Status.Etudiant) ? "EDT" : "profEDT";
 	}
 	
 }

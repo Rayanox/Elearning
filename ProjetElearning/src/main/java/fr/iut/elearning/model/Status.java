@@ -2,6 +2,6 @@ package fr.iut.elearning.model;
 
 public enum Status {
 
-	Admin, Etudiant, Professeur, Visiteur, All
+	Admin, Etudiant, Professeur, Inscrit, Visiteur, All
 	
 }

@@ -22,7 +22,7 @@ import fr.iut.elearning.model.Status;
 public class Control {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	private final Status statusController = Status.Etudiant;
+	private final Status statusController = Status.Inscrit;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -30,7 +30,7 @@ public class Control {
 	@Autowired
     public SessionBean sessionBean;
 	
-	@RequestMapping(value = "/control", method = RequestMethod.GET)
+	@RequestMapping(value = "/Control", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -39,7 +39,8 @@ public class Control {
 		if(!Login.VerificationAccesPage(sessionBean, statusController))
 			return "NonAutorise";
 		
-		return "control";
+		Status statusSession = sessionBean.getStatus();
+		return statusSession.equals(Status.Etudiant) ? "control" : "profExam";
 	}
 	
 }
