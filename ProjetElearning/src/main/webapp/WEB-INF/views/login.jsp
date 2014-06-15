@@ -7,8 +7,8 @@
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<jsp:include page="Headers.jsp"></jsp:include>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="Headers.jsp"></jsp:include>
 </head>
 
 
@@ -32,13 +32,14 @@
 					<div style="display: none" id="login-alert"
 						class="alert alert-danger col-sm-12"></div>
 
-					<form id="loginform" class="form-horizontal" role="form">
+					<form id="loginform" class="form-horizontal" action="./login"
+						role="form" method="post">
 
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i
 								class="glyphicon glyphicon-user"></i></span> <input id="login-username"
-								type="text" class="form-control" name="username" value=""
-								placeholder="Email">
+								type="text" class="form-control" name="username" 
+								placeholder="Nom d'utilisateur">
 						</div>
 
 						<div style="margin-bottom: 25px" class="input-group">
@@ -56,11 +57,9 @@
 							</div>
 						</div>
 
-						<div style="margin-top: 10px" class="form-group">
-							<!-- Button -->
-
+						<div class="form-group">
 							<div class="col-sm-12 controls">
-								<a id="btn-login" href="#" class="btn btn-success">Connexion </a>
+								<button type="submit" class="btn btn-success">Connexion</button>
 							</div>
 						</div>
 						<div class="form-group">
@@ -73,6 +72,7 @@
 								</div>
 							</div>
 						</div>
+
 					</form>
 				</div>
 			</div>

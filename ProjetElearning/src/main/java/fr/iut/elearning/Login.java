@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.iut.elearning.model.SessionBean;
 import fr.iut.elearning.model.Status;
@@ -42,6 +43,21 @@ public class Login {
 			return "NonAutorise";
 		
 		response.addCookie(new Cookie("idSession", ""));
+		
+		
+		return "login";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String homePost(Locale locale, Model model, @RequestParam String username, @RequestParam String password, HttpSession session) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		session.setAttribute("sessionBean", sessionBean);
+
+		if(!Login.VerificationAccesPage(sessionBean, statusController))
+			return "NonAutorise";
+		System.out.println("\n\nNom d'utilisateur : "+username);
+		System.out.println("Mot de passe : "+password);
 		
 		
 		return "login";
