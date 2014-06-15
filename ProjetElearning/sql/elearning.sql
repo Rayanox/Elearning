@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: iutmontreuil
+-- Host: localhost    Database: elearning
 -- ------------------------------------------------------
 -- Server version	5.5.37-0ubuntu0.12.04.1
 
@@ -242,8 +242,11 @@ CREATE TABLE `User` (
   `lastName` varchar(255) DEFAULT NULL,
   `password` varchar(256) NOT NULL,
   `login` varchar(256) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_status` (`status`),
+  CONSTRAINT `User_ibfk_1` FOREIGN KEY (`status`) REFERENCES `UserStatus` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -252,8 +255,32 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (1,'oto@mail.com','toto','toot','salut','toto');
+INSERT INTO `User` VALUES (1,'oto@mail.com','toto','toot','salut','toto',1),(2,'rayane@hotmail.fr','Rayane','BEN-HMIDANE','0000','Rayanox',1),(3,'max@hotmail.fr','Max','Boulanger','admin','admin',0),(4,'arnaud@hotmail.fr','Arnaud','Nauwynck','arnaud','arnaud',2),(5,'user@hotmail.fr','User','UserName','using','user',1);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `UserStatus`
+--
+
+DROP TABLE IF EXISTS `UserStatus`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `UserStatus` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `status` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `UserStatus`
+--
+
+LOCK TABLES `UserStatus` WRITE;
+/*!40000 ALTER TABLE `UserStatus` DISABLE KEYS */;
+INSERT INTO `UserStatus` VALUES (0,'Admin'),(1,'Student'),(2,'Teacher');
+/*!40000 ALTER TABLE `UserStatus` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -265,4 +292,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-15 20:06:19
+-- Dump completed on 2014-06-16  0:21:47
