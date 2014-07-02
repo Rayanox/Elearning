@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.iut.elearning.dao.SubjectDao;
-import fr.iut.elearning.model.SubjectModel;
+import fr.iut.elearning.model.Subject;
 
 @Service
 public class SubjectServiceImpl implements SubjectService{
@@ -18,15 +18,15 @@ public class SubjectServiceImpl implements SubjectService{
 	
 	@Override
 	@Transactional
-	public SubjectModel create(SubjectModel subject) {
-		SubjectModel createdSubject = subject;
+	public Subject create(Subject subject) {
+		Subject createdSubject = subject;
 		return subjectDao.save(createdSubject);
 	}
 
 	@Override
 	@Transactional
-	public SubjectModel delete(int id) {
-		SubjectModel deletedSubject = subjectDao.findOne(id);
+	public Subject delete(int id) {
+		Subject deletedSubject = subjectDao.findOne(id);
 
 		subjectDao.delete(deletedSubject);
 		return deletedSubject;
@@ -34,14 +34,14 @@ public class SubjectServiceImpl implements SubjectService{
 
 	@Override
 	@Transactional
-	public List<SubjectModel> findAll() {
+	public List<Subject> findAll() {
 		return subjectDao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public SubjectModel update(SubjectModel subject) {
-		SubjectModel updatedSubject = subjectDao.findOne(subject.getId());
+	public Subject update(Subject subject) {
+		Subject updatedSubject = subjectDao.findOne(subject.getId());
 
 		updatedSubject.setSubjectName(subject.getSubjectName());
 		return updatedSubject;
@@ -49,7 +49,7 @@ public class SubjectServiceImpl implements SubjectService{
 
 	@Override
 	@Transactional
-	public SubjectModel findById(int id) {
+	public Subject findById(int id) {
 		return subjectDao.findOne(id);
 	}
 

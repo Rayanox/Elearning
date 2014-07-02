@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.iut.elearning.dao.CourseDao;
-import fr.iut.elearning.model.CourseModel;
+import fr.iut.elearning.model.Course;
 
 @Service
 public class CourseServiceImpl implements CourseService{
@@ -18,15 +18,15 @@ public class CourseServiceImpl implements CourseService{
 	
 	@Override
 	@Transactional
-	public CourseModel create(CourseModel course) {
-		CourseModel createdCourse = course;
+	public Course create(Course course) {
+		Course createdCourse = course;
 		return courseDao.save(createdCourse);
 	}
 
 	@Override
 	@Transactional
-	public CourseModel delete(int id) {
-		CourseModel deletedCourse = courseDao.findOne(id);
+	public Course delete(int id) {
+		Course deletedCourse = courseDao.findOne(id);
 
 		courseDao.delete(deletedCourse);
 		return deletedCourse;
@@ -34,14 +34,14 @@ public class CourseServiceImpl implements CourseService{
 
 	@Override
 	@Transactional
-	public List<CourseModel> findAll() {
+	public List<Course> findAll() {
 		return courseDao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public CourseModel update(CourseModel course) {
-		CourseModel updatedCourse = courseDao.findOne(course.getId());
+	public Course update(Course course) {
+		Course updatedCourse = courseDao.findOne(course.getId());
 
 		updatedCourse.setNameCourse(course.getNameCourse());
 		return updatedCourse;
@@ -49,7 +49,7 @@ public class CourseServiceImpl implements CourseService{
 
 	@Override
 	@Transactional
-	public CourseModel findById(int id) {
+	public Course findById(int id) {
 		return courseDao.findOne(id);
 	}
 

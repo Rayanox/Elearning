@@ -3,24 +3,40 @@ package fr.iut.elearning.model;
 import java.sql.Time;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class CoursePlanningModel {
+public class CoursePlanning {
 	
 	@Id
 	@GeneratedValue
 	private int id;
+	
+	@Column(name = "course_id")
 	private int courseId;
+	
+	@Column(name = "room_id")
 	private int roomId;
+	
+	@Column(name = "teacher_id")
 	private int teacherId;
+	
+	@Column(name = "session_date")
 	private Date sessionDate;
+	
+	@Column(name = "begin_time")
 	private Time beginTime;
+	
+	@Column(name = "end_time")
 	private Time endTime;
 	
-	public CoursePlanningModel(){
+	@Column(name = "type")
+	private String type;
+	
+	public CoursePlanning(){
 		
 	}
 
@@ -78,6 +94,14 @@ public class CoursePlanningModel {
 
 	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
+	}
+	
+	public String getType(){
+		return type;
+	}
+	
+	public void setType(String type){
+		this.type = type;
 	}
 	
 }

@@ -2,13 +2,14 @@ package fr.iut.elearning.service;
 
 import java.util.List;
 
-import fr.iut.elearning.model.CoursePlanningModel;
+import fr.iut.elearning.model.CoursePlanning;
 
 public interface CoursePlanningService {
 
-	public CoursePlanningModel create(CoursePlanningModel coursePlanning);
-	public CoursePlanningModel delete(int id);
-	public List<CoursePlanningModel> findAll();
-	public CoursePlanningModel update(CoursePlanningModel coursePlanning);
-	public CoursePlanningModel findById(int id);
+	public CoursePlanning create(CoursePlanning coursePlanning);
+	public CoursePlanning delete(int id);
+	public List<CoursePlanning> findAll();
+	public CoursePlanning update(CoursePlanning coursePlanning);
+	public CoursePlanning findById(int id);
+	public CoursePlanning findTeacherNextCourseById(int teacherId);
 }
