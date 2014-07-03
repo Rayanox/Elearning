@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import fr.iut.elearning.model.CoursePlanning;
 import fr.iut.elearning.model.SessionBean;
@@ -39,7 +41,7 @@ public class Course {
 
 	@Autowired
 	public SessionBean sessionBean;
-	
+
 	@Autowired
 	private CoursePlanningService coursePlanningService;
 	@Autowired
@@ -62,48 +64,47 @@ public class Course {
 
 	@RequestMapping(value = "/addCourseStudent", method = RequestMethod.POST)
 	public String CourseStudent(Locale locale, Model model,
-			@RequestParam int course,HttpSession session) {
+			@RequestParam int course, HttpSession session) {
 
 		session.setAttribute("sessionBean", sessionBean);
-		
+
 		StudentInCourse courseStudent = new StudentInCourse();
-		
+
 		courseStudent.setStudentId(sessionBean.getId());
 		courseStudent.setCourseId(course);
-		
-		
+
 		courseService.create(courseStudent);
-		
+
 		return "course";
 	}
-	
+
 	@RequestMapping(value = "/addEvalStudent", method = RequestMethod.POST)
 	public String EvalStudent(Locale locale, Model model,
-			@RequestParam int eval,HttpSession session) {
+			@RequestParam int eval, HttpSession session) {
 
 		session.setAttribute("sessionBean", sessionBean);
-		
+
 		StudentInAssessment assessmentStudent = new StudentInAssessment();
-		
+
 		assessmentStudent.setStudentId(sessionBean.getId());
 		assessmentStudent.setCourseId(eval);
-		
-		
+
 		assessmentService.create(assessmentStudent);
-		
+
 		return "course";
 	}
-	
+
 	@RequestMapping(value = "/addCourse", method = RequestMethod.POST)
 	public String addCourse(Locale locale, Model model,
 			@RequestParam int course, @RequestParam int rooms,
 			@RequestParam Time beginTime, @RequestParam Time endTime,
-			@RequestParam Date date, HttpSession session) {
+			@RequestParam Date date, @RequestParam String dashBoard,
+			HttpSession session) {
 
 		session.setAttribute("sessionBean", sessionBean);
-		
-		CoursePlanning coursePlanning = new CoursePlanning(); 
-		
+
+		CoursePlanning coursePlanning = new CoursePlanning();
+
 		coursePlanning.setTeacherId(sessionBean.getId());
 		coursePlanning.setCourseId(course);
 		coursePlanning.setRoomId(rooms);
@@ -111,33 +112,25 @@ public class Course {
 		coursePlanning.setEndTime(endTime);
 		coursePlanning.setSessionDate(date);
 		coursePlanning.setType("course");
-		
+
 		coursePlanningService.create(coursePlanning);
-		
-		return "profDashBoard";
+
+		String dashBoardValue = "0";
+		if (dashBoard.equals(dashBoardValue)) {
+			return "profCourse";
+		} else {
+			return "profDashBoard";
+		}
 	}
-	
-	@RequestMapping(value = "/addAssessment", method = RequestMethod.POST)
-	public String AddAssessement (Locale locale, Model model,
-			@RequestParam int course, @RequestParam int rooms,
-			@RequestParam Time beginTime, @RequestParam Time endTime,
-			@RequestParam Date date, HttpSession session){
-		
-		session.setAttribute("sessionBean", sessionBean);
-		
-		CoursePlanning coursePlanning = new CoursePlanning(); 
-		
-		coursePlanning.setTeacherId(sessionBean.getId());
-		coursePlanning.setCourseId(course);
-		coursePlanning.setRoomId(rooms);
-		coursePlanning.setBeginTime(beginTime);
-		coursePlanning.setEndTime(endTime);
-		coursePlanning.setSessionDate(date);
-		coursePlanning.setType("assessement");
-		
-		coursePlanningService.create(coursePlanning);
-		
-		return "profDashBoard";
+
+	@RequestMapping(value = "/deleteCourse", method = RequestMethod.POST)
+	public @ResponseBody String deleteCourse(Locale locale, Model model,
+			@RequestParam int courseToDelete, HttpServletRequest request,
+			HttpSession session) {
+
+		coursePlanningService.delete(courseToDelete);
+
+		return "profCourse";
 	}
 
 }

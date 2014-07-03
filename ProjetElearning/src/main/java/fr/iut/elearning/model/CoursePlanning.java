@@ -40,6 +40,18 @@ public class CoursePlanning {
 		
 	}
 
+	public CoursePlanning(int id, int courseId, int roomId, int teacherId,
+			Date sessionDate, Time beginTime, Time endTime, String type) {
+		this.id = id;
+		this.courseId = courseId;
+		this.roomId = roomId;
+		this.teacherId = teacherId;
+		this.sessionDate = sessionDate;
+		this.beginTime = beginTime;
+		this.endTime = endTime;
+		this.type = type;
+	}
+
 	public int getId() {
 		return id;
 	}
