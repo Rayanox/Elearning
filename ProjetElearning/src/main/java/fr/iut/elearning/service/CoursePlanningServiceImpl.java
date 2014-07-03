@@ -66,7 +66,7 @@ public class CoursePlanningServiceImpl implements CoursePlanningService{
 
 	@Override
 	@Transactional
-	public List<CoursePlanning> findTeacherNextAssessmentById(int teacherId) {
+	public List<CoursePlanning> findTeacherNextAssessmentById(int teacherId){
 		return coursePlanningDao.findTeacherNextAssessmentById(teacherId);
 	}
 

@@ -71,7 +71,7 @@ public class Control {
 		coursePlanning.setBeginTime(beginTime);
 		coursePlanning.setEndTime(endTime);
 		coursePlanning.setSessionDate(date);
-		coursePlanning.setType("assessement");
+		coursePlanning.setType("assessment");
 
 		coursePlanningService.create(coursePlanning);
 

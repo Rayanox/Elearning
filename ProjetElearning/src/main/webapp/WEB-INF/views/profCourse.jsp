@@ -156,7 +156,7 @@
 	});
 	
 	$(document).ready(function(){
-		var nameCourse, nameRoom, beginTime, endTime, id;
+		var nameCourse, nameRoom, beginTime, endTime, id, date;
 		
 		$.ajax({
 			url: 'getTeacherCourses.html',
@@ -164,9 +164,11 @@
 			dataType: 'json',
 			success: function(data) {
 				$.each(data, function(i, item){
-					console.log(data);
 					var donnees;
 					$.each(item, function(j, jitem){
+						if($.isPlainObject(jitem) == false){
+							date = jitem;
+						}
 						if(jitem.nameCourse != null){
 							nameCourse = jitem.nameCourse;
 						}
@@ -182,7 +184,8 @@
 						if(jitem.id != null){
 							id = jitem.id;
 						}
-						donnees = "<input type='checkbox' class='courseToDel' name ='courseToDelete' value = '"+id+"'> <span class='gras'>Cours: </span>" + nameCourse + " <span class='gras'>Salle: </span>" + nameRoom + " <span class='gras'>Début: </span>" + beginTime + " <span class='gras'>Fin: </span>" + endTime;
+						
+						donnees = "<input type='checkbox' class='courseToDel' name ='courseToDelete' value = '"+id+"'> <span class='gras'>Date: </span>" + date + " <span class='gras'>Cours: </span>" + nameCourse + " <span class='gras'>Salle: </span>" + nameRoom + " <span class='gras'>Début: </span>" + beginTime + " <span class='gras'>Fin: </span>" + endTime;
 					});
 					$('.courseTable').find('.courses').append("<tr><td>"+ donnees + "</td></tr>");
 				});

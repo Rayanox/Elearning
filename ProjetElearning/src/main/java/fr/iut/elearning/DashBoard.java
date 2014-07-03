@@ -10,8 +10,6 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.wimpi.telnetd.io.terminal.ansi;
-
 import org.codehaus.jackson.map.util.JSONPObject;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -157,6 +155,7 @@ public class DashBoard {
 		
 		JSONObject jsonObject = new JSONObject();
 		
+		DateFormat df = new SimpleDateFormat("dd/MM/yyy");
 		
 		for (int i = 0; i < coursesPlanning.size(); i++) {
 			Course course = courseService.findById(coursesPlanning.get(i).getCourseId());
@@ -165,6 +164,7 @@ public class DashBoard {
 			listObj.add(course);
 			listObj.add(room);
 			listObj.add(coursesPlanning.get(i));
+			listObj.add(df.format(coursesPlanning.get(i).getSessionDate()));
 			jsonObject.put(i, listObj);
 		}
 		
@@ -180,6 +180,7 @@ public class DashBoard {
 		
 		JSONObject jsonObject = new JSONObject();
 		
+		DateFormat df = new SimpleDateFormat("dd/MM/yyy");
 		
 		for (int i = 0; i < coursesPlanning.size(); i++) {
 			Course course = courseService.findById(coursesPlanning.get(i).getCourseId());
@@ -188,6 +189,7 @@ public class DashBoard {
 			listObj.add(course);
 			listObj.add(room);
 			listObj.add(coursesPlanning.get(i));
+			listObj.add(df.format(coursesPlanning.get(i).getSessionDate()));
 			jsonObject.put(i, listObj);
 		}
 		
