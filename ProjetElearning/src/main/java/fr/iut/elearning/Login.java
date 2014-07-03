@@ -72,8 +72,8 @@ public class Login {
 
 		boolean connected = false;
 		for (User user : usersList) {
-			System.out.println("Login = " + user.getLogin());
-			System.out.println("Password = " + user.getPassword());
+			//System.out.println("Login = " + user.getLogin());
+			//System.out.println("Password = " + user.getPassword());
 			if (user.getLogin().equals(username)) {
 				if (user.getPassword().equals(password)) {
 					connected = true;
@@ -109,10 +109,8 @@ public class Login {
 	public static boolean VerificationAccesPage(SessionBean s,
 			Status statusController) {
 		
-		System.out.println("Statut du bean = "+s.getStatus()+
-				"Statut du controller = "+statusController);
-		
-		
+		//System.out.println("Statut du bean = "+s.getStatus()+
+			//	"Statut du controller = "+statusController);
 		
 		if (s.getStatus().equals(statusController)
 				|| (statusController.equals(Status.Inscrit) && (s.getStatus().equals(Status.Etudiant) || s.getStatus().equals(Status.Professeur)))

@@ -5,12 +5,11 @@
 
 <head>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="/test.js"></script>
 	<title>Tableau de bord</title>
 </head>
 
-
 <body>
-	
 	<jsp:include page="Headers.jsp"></jsp:include>
 
 
@@ -18,23 +17,25 @@
 		<h1 style="text-align: center;">Tableau de bord</h1>
 		<div class="panel panel-default">
 		  <!-- Default panel contents -->
-		  			<div class="panel-heading">Récapitulatif des cours</div>
+		  			<div class="panel-heading">Rï¿½capitulatif des cours</div>
 
 			<!-- Table -->
 			<div class="well">
+			
 				<table class="table table-striped table-bordered">
 					<tr>
 						<th>Liste de tous les cours &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button>S'inscrire</button></th>
-						<th>Liste des cours suivis &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button>Se désinscrire</button></th>
+						<th>Liste des cours suivis &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button>Se dï¿½sinscrire</button></th>
 					</tr>
 						<tr>
 							<td>
 					<table class="table">
 						<tr>
-							<th>Intitulé </th>
+							<th>Intitule </th>
 							<th>Inscription</th>
 						</tr>
-						<tr>
+						<tr id="14">
+						
 							<td>Cours 1</td>
 							<td><input type="checkbox"></td>
 						</tr>
@@ -42,17 +43,17 @@
 							<td>Cours 2</td>
 							<td><input type="checkbox"></td>
 						</tr>
-						<tr>
+						<tr id="cours3">
 							<td>Cours 3</td>
-							<td><input type="checkbox"></td>
+							<td><input type="checkbox" onclick="AjoutCours()"></td>
 						</tr>
 					</table>
 					</td>
 							<td>
 					<table class="table">
 						<tr>
-							<th>Intitulé</th>
-							<th>Désinscription</th>
+							<th>Intitulï¿½</th>
+							<th>Dï¿½sinscription</th>
 						</tr>
 						<tr>
 							<td>Cours 4</td>
@@ -72,8 +73,15 @@
 				</table>
 			</div>
 		  
-		  
-		  
+		  <!-- Codes javascript et AJAX -->
+		  <script type="text/javascript">function AjoutCours(){
+			  var elementTR = document.getElementById("cours3");
+			  kill();
+			  document.getElementById("14");
+			  alert(document.getElementById("cours3").innerHTML);
+			  //alert("Ajout d'un couuurs !!! : "+elementTR);
+			}
+		  </script>
 		  
 		  
 		  
@@ -120,7 +128,7 @@
 <!-- 		</div> -->
 		
 <!-- 		<div> -->
-<!-- 			<button>Se désinscrire</button> -->
+<!-- 			<button>Se dï¿½sinscrire</button> -->
 <!-- 		</div> -->
 		
 		
