@@ -20,14 +20,14 @@
 		<div class="well">
 			<ul class="nav nav-pills nav-stacked">
 			  <li class="active">
-			    <a href="./Course.html">
-			      <span class="badge pull-right"><span id="nextCourseDate">14/07/2014</span> à <span id="nextCourseTime">9</span>H</span>
+			    <a href="#">
+			      <span class="badge pull-right">14/05/2014 à 9H</span>
 			      Prochain cours
 			    </a>
 			  </li>
 			  <li>
-			    <a href="./Control.html">
-			      <span class="badge pull-right"><span id="nextAssessmentDate">14/07/2014</span> à <span id="nextAssessmentTime">15</span>H</span>
+			    <a href="#">
+			      <span class="badge pull-right">14/05/2014 à 9H</span>
 			      Prochaine évaluation 
 			    </a>
 			  </li>
@@ -110,7 +110,6 @@
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
 				        <button type="submit" class="btn btn-primary">Sauvegarder</button>
-				        <input type="hidden" name="dashBoard" value="1">
 				      </div>
 				      </form>
 				    </div>
@@ -169,7 +168,6 @@
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
 				        <button type="submit" class="btn btn-primary">Sauvegarder</button>
-				        <input type="hidden" name="dashBoardAssessment" value="1">
 				      </div>
 				      </form>
 				    </div>
@@ -233,33 +231,6 @@
 		        }
 		      });
 	});
-
-	$(document).ready(function() {
-		$.ajax({
-	        url: 'teacherNextCourse.html',
-	        type : 'GET',
-	        dataType: 'json',
-	        success: function(data) {
-	        	$("#nextCourseDate").html(data.date);
-	        	var courseTime = data.coursePlanning.beginTime;
-	        	var time = courseTime.substring(0,2);
-	        	$("#nextCourseTime").html(time);
-	        }
-	      });
-		
-		$.ajax({
-	        url: 'teacherNextAssessment.html',
-	        type : 'GET',
-	        dataType: 'json',
-	        success: function(data) {
-	        	$("#nextAssessmentDate").html(data.date);
-	        	var courseTime = data.coursePlanning.beginTime;
-	        	var time = courseTime.substring(0,2);
-	        	$("#nextAssessmentTime").html(time);
-	        }
-	      });
-	});
-	
 	</script>
 	
 </body>
