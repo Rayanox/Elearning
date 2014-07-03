@@ -22,6 +22,13 @@ public class Room {
 	public Room(){
 		
 	}
+	
+	public Room(int id, String nameRoom, String building, int capacity) {
+		this.id = id;
+		this.nameRoom = nameRoom;
+		this.building = building;
+		this.capacity = capacity;
+	}
 
 	public int getId() {
 		return id;

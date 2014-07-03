@@ -65,6 +65,20 @@ public class DashBoard {
 	public DashBoard(TeacherService teacherService) {
 		this.teacherService = teacherService;
 	}
+	
+	@Autowired
+	public DashBoard(RoomService roomService) {
+		this.roomService = roomService;
+	}
+
+	@Autowired
+	public DashBoard(CourseService courseService) {
+		this.courseService = courseService;
+	}
+
+	public DashBoard(CoursePlanningService coursePlanningService) {
+		this.coursePlanningService = coursePlanningService;
+	}
 
 	/**
 	 * Simply selects the home view to render by returning its name.
