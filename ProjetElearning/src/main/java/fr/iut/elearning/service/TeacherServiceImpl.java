@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.iut.elearning.dao.TeacherDao;
-import fr.iut.elearning.model.TeacherModel;
+import fr.iut.elearning.model.Teacher;
 
 @Service
 public class TeacherServiceImpl implements TeacherService{
@@ -18,15 +18,15 @@ public class TeacherServiceImpl implements TeacherService{
 	
 	@Override
 	@Transactional
-	public TeacherModel create(TeacherModel teacher) {
-		TeacherModel createdTeacher = teacher;
+	public Teacher create(Teacher teacher) {
+		Teacher createdTeacher = teacher;
 		return teacherDao.save(createdTeacher);
 	}
 
 	@Override
 	@Transactional
-	public TeacherModel delete(int id) {
-		TeacherModel deletedTeacher = teacherDao.findOne(id);
+	public Teacher delete(int id) {
+		Teacher deletedTeacher = teacherDao.findOne(id);
 
 		teacherDao.delete(deletedTeacher);
 		return deletedTeacher;
@@ -34,14 +34,14 @@ public class TeacherServiceImpl implements TeacherService{
 
 	@Override
 	@Transactional
-	public List<TeacherModel> findAll() {
+	public List<Teacher> findAll() {
 		return teacherDao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public TeacherModel update(TeacherModel teacher) {
-		TeacherModel updatedTeacher = teacherDao.findOne(teacher.getId());
+	public Teacher update(Teacher teacher) {
+		Teacher updatedTeacher = teacherDao.findOne(teacher.getId());
 
 		updatedTeacher.setFirstName(teacher.getFirstName());
 		updatedTeacher.setLastName(teacher.getLastName());
@@ -50,7 +50,7 @@ public class TeacherServiceImpl implements TeacherService{
 
 	@Override
 	@Transactional
-	public TeacherModel findById(int id) {
+	public Teacher findById(int id) {
 		return teacherDao.findOne(id);
 	}
 

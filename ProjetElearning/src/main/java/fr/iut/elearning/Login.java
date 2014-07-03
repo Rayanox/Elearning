@@ -79,6 +79,7 @@ public class Login {
 					connected = true;
 					sessionBean.setStatus(extractStatus(user.getStatus()));
 					sessionBean.setLogin(username);
+					sessionBean.setId(user.getId());
 				}
 
 				break;

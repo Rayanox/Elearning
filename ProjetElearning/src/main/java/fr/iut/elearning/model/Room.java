@@ -1,20 +1,25 @@
 package fr.iut.elearning.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class RoomModel {
+public class Room {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "id_room")
 	private int id;
+	
+	@Column(name = "name_room")
 	private String nameRoom;
+	
 	private String building;
 	private int capacity;
 	
-	public RoomModel(){
+	public Room(){
 		
 	}
 

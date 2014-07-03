@@ -87,68 +87,101 @@
 			</div>
 		</div>
 
-		<a data-toggle="modal" href="#myModal1" class="btn btn-success"><span
-			class="glyphicon glyphicon-plus"></span> Inscription Cours/Evaluation</a>
+		<a data-toggle="modal" href="#myModal1" class="btn btn-success btn-lg addCourseStudent"><span
+			class="glyphicon glyphicon-plus"></span> Inscription Cours</a>
 
-		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
+				<form id="coursestudentform" class="form-inline" action="./addCourseStudent" role="form" method="post">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">Inscription
-							Cours/Evaluation</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Inscription Cours</h4>
 					</div>
 					<div class="modal-body">
 						<h4>Inscription cours</h4>
-						<form class="form-inline" role="form">
+						
+							
 							<div class="form-group">
-								<select class="form-control">
-									<option>Intitulé du cours 1</option>
-									<option>Intitulé du cours 2</option>
-									<option>Intitulé du cours 3</option>
-									<option>Intitulé du cours 4</option>
-									<option>Intitulé du cours 5</option>
-								</select>
+								<label for="course">Cours</label> 
+								<select name="course" class="form-control course"></select>
 							</div>
-							<div class="form-group">
-								<select class="form-control">
-									<option>Semestre 1</option>
-									<option>Semestre 2</option>
-								</select>
-							</div>
-						</form>
-
-						<h4>Inscription évaluations</h4>
-						<form class="form-inline" role="form">
-							<div class="form-group">
-								<select class="form-control">
-									<option>Intitulé éval 1</option>
-									<option>Intitulé éval 2</option>
-									<option>Intitulé éval 3</option>
-									<option>Intitulé éval 4</option>
-									<option>Intitulé éval 5</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<select class="form-control">
-									<option>Semestre 1</option>
-									<option>Semestre 2</option>
-								</select>
-							</div>
-						</form>
 
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
-						<button type="button" class="btn btn-primary">S'inscrire</button>
+						<button type="submit" class="btn btn-primary">S'inscrire</button>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
+		
+				<a data-toggle="modal" href="#myModal2" class="btn btn-success btn-lg addEvalStudent"><span
+			class="glyphicon glyphicon-plus"></span> Inscription Evaluations</a>
+			<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+				<form id="evalstudentform" class="form-inline" action="./addEvalStudent" role="form" method="post">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Inscription Evaluation</h4>
+					</div>
+					<div class="modal-body">
 
+							<h4>Inscription évaluations</h4>
+							<div class="form-group">
+								<label for="eval">Evaluations</label> 
+								<select name="eval" class="form-control eval"></select>
+							</div>
+						
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+						<button type="submit" class="btn btn-primary">S'inscrire</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
+	
+	
+	<script type="text/javascript">
+	
+	$(".addCourseStudent").click(function(){
+	      $.ajax({
+	        url: 'getCourse.html',
+	        type : 'GET',
+	        dataType: 'json',
+	        success: function(data) {
+	        	for (var i = 0; i < data.length; i++) {
+	                $('.course')
+	                	.append($("<option></option>")
+	                	.attr("value",data[i].id)
+	                	.text(data[i].nameCourse));
+	              }
+	        }
+	      });
+	});
+	
+	$(".addEvalStudent").click(function(){
+	      $.ajax({
+	        url: 'getCourse.html',
+	        type : 'GET',
+	        dataType: 'json',
+	        success: function(data) {
+	        	for (var i = 0; i < data.length; i++) {
+	                $('.eval')
+	                	.append($("<option></option>")
+	                	.attr("value",data[i].id)
+	                	.text(data[i].nameCourse));
+	              }
+	        }
+	      });
+	});
+	</script>
 
 </body>
 </html>

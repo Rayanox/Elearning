@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.iut.elearning.dao.CoursePlanningDao;
-import fr.iut.elearning.model.CoursePlanningModel;
+import fr.iut.elearning.model.CoursePlanning;
 
 @Service
 public class CoursePlanningServiceImpl implements CoursePlanningService{
@@ -18,15 +18,15 @@ public class CoursePlanningServiceImpl implements CoursePlanningService{
 	
 	@Override
 	@Transactional
-	public CoursePlanningModel create(CoursePlanningModel coursePlanning) {
-		CoursePlanningModel createdCoursePlanning = coursePlanning;
+	public CoursePlanning create(CoursePlanning coursePlanning) {
+		CoursePlanning createdCoursePlanning = coursePlanning;
 		return coursePlanningDao.save(createdCoursePlanning);
 	}
 
 	@Override
 	@Transactional
-	public CoursePlanningModel delete(int id) {
-		CoursePlanningModel deletedCoursePlanning = coursePlanningDao.findOne(id);
+	public CoursePlanning delete(int id) {
+		CoursePlanning deletedCoursePlanning = coursePlanningDao.findOne(id);
 
 		coursePlanningDao.delete(deletedCoursePlanning);
 		return deletedCoursePlanning;
@@ -34,14 +34,14 @@ public class CoursePlanningServiceImpl implements CoursePlanningService{
 
 	@Override
 	@Transactional
-	public List<CoursePlanningModel> findAll() {
+	public List<CoursePlanning> findAll() {
 		return coursePlanningDao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public CoursePlanningModel update(CoursePlanningModel coursePlanning) {
-		CoursePlanningModel updatedCoursePlanning = coursePlanningDao.findOne(coursePlanning.getId());
+	public CoursePlanning update(CoursePlanning coursePlanning) {
+		CoursePlanning updatedCoursePlanning = coursePlanningDao.findOne(coursePlanning.getId());
 
 		updatedCoursePlanning.setCourseId(coursePlanning.getCourseId());
 		updatedCoursePlanning.setRoomId(coursePlanning.getRoomId());
@@ -54,8 +54,14 @@ public class CoursePlanningServiceImpl implements CoursePlanningService{
 
 	@Override
 	@Transactional
-	public CoursePlanningModel findById(int id) {
+	public CoursePlanning findById(int id) {
 		return coursePlanningDao.findOne(id);
+	}
+	
+	@Override
+	@Transactional
+	public CoursePlanning findTeacherNextCourseById(int teacherId){
+		return coursePlanningDao.findTeacherNextCourse(teacherId);
 	}
 
 }

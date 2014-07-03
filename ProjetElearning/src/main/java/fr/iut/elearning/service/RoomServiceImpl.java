@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.iut.elearning.dao.RoomDao;
-import fr.iut.elearning.model.RoomModel;
+import fr.iut.elearning.model.Room;
 
 @Service
 public class RoomServiceImpl implements RoomService{
@@ -18,15 +18,15 @@ public class RoomServiceImpl implements RoomService{
 	
 	@Override
 	@Transactional
-	public RoomModel create(RoomModel room) {
-		RoomModel createdRoom = room;
+	public Room create(Room room) {
+		Room createdRoom = room;
 		return roomDao.save(createdRoom);
 	}
 
 	@Override
 	@Transactional
-	public RoomModel delete(int id) {
-		RoomModel deletedRoom = roomDao.findOne(id);
+	public Room delete(int id) {
+		Room deletedRoom = roomDao.findOne(id);
 
 		roomDao.delete(deletedRoom);
 		return deletedRoom;
@@ -34,14 +34,14 @@ public class RoomServiceImpl implements RoomService{
 
 	@Override
 	@Transactional
-	public List<RoomModel> findAll() {
+	public List<Room> findAll() {
 		return roomDao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public RoomModel update(RoomModel room) {
-		RoomModel updatedRoom = roomDao.findOne(room.getId());
+	public Room update(Room room) {
+		Room updatedRoom = roomDao.findOne(room.getId());
 
 		updatedRoom.setNameRoom(room.getNameRoom());
 		updatedRoom.setBuilding(room.getBuilding());
@@ -51,7 +51,7 @@ public class RoomServiceImpl implements RoomService{
 
 	@Override
 	@Transactional
-	public RoomModel findById(int id) {
+	public Room findById(int id) {
 		return roomDao.findOne(id);
 	}
 

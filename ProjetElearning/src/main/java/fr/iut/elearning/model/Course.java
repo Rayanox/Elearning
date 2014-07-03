@@ -1,19 +1,23 @@
 package fr.iut.elearning.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 
 @Entity
-public class CourseModel {
+public class Course {
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "id_course")
 	private int id;
+	
+	@Column(name = "name_course")
 	private String nameCourse;
 	
-	public CourseModel(){
+	public Course(){
 		
 	}
 

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Scope(value="session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SessionBean {
  
-    private final String id = UUID.randomUUID().toString();
+    private int id;
     private String Login;
     private Status status = Status.Visiteur;
     
@@ -18,9 +18,12 @@ public class SessionBean {
     
     
     
-    public String getId() {
+    public int getId() {
 		return id;
 	}
+    public void setId(Integer integer){
+    	this.id = integer;
+    }
     public String getLogin() {
 		return Login;
 	}

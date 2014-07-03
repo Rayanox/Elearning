@@ -1,18 +1,22 @@
 package fr.iut.elearning.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class SubjectModel {
+public class Subject {
 	
 	@Id
 	@GeneratedValue
+	@Column(name = "id_subject")
 	private int id;
+	
+	@Column(name = "name_subject")
 	private String subjectName;
 	
-	public SubjectModel(){
+	public Subject(){
 		
 	}
 

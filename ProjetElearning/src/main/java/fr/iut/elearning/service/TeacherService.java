@@ -2,13 +2,13 @@ package fr.iut.elearning.service;
 
 import java.util.List;
 
-import fr.iut.elearning.model.TeacherModel;
+import fr.iut.elearning.model.Teacher;
 
 public interface TeacherService {
 
-	public TeacherModel create(TeacherModel teacher);
-	public TeacherModel delete(int id);
-	public List<TeacherModel> findAll();
-	public TeacherModel update(TeacherModel teacher);
-	public TeacherModel findById(int id);
+	public Teacher create(Teacher teacher);
+	public Teacher delete(int id);
+	public List<Teacher> findAll();
+	public Teacher update(Teacher teacher);
+	public Teacher findById(int id);
 }
