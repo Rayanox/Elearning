@@ -1,5 +1,6 @@
 package fr.iut.elearning;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -65,17 +66,31 @@ public class DashBoard {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/DashBoard", method = RequestMethod.GET)
-	public String home(Locale locale, Model model,
+	public ModelAndView home(Locale locale, Model model,
 			HttpServletResponse response, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		session.setAttribute("sessionBean", sessionBean);
 
 		if (!Login.VerificationAccesPage(sessionBean, statusController))
-			return "NonAutorise";
-
+			return new ModelAndView("NonAutorise");
+					
 		Status statusSession = sessionBean.getStatus();
-		return statusSession.equals(Status.Etudiant) ? "DashBoard"
-				: "profDashBoard";
+		
+		ModelAndView mav = new ModelAndView(statusSession.equals(Status.Etudiant) ? "DashBoard"
+				: "profDashBoard");
+		
+		if(statusSession.equals(Status.Etudiant)) {
+			
+			java.util.List<Course> courseList = courseService.findAll();
+			mav.addObject("courseList", courseList);
+			
+			for (Course course : courseList) {
+				System.out.println(course.getNameCourse());
+				
+			}
+		}
+		
+		return mav;
 	}
 
 	@RequestMapping(value = "/getTeacher/{id}", method = RequestMethod.GET)

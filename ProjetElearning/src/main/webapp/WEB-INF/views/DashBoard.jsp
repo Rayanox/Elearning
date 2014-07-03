@@ -1,3 +1,5 @@
+<%@page import="fr.iut.elearning.model.Course"%>
+<%@page import="org.springframework.context.annotation.Import"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,13 +13,17 @@
 
 <body>
 	<jsp:include page="Headers.jsp"></jsp:include>
-
+		  
+		  
 
 	<div style="margin: 10px;"> <!--  Englobe tout le contenu -->
 		<h1 style="text-align: center;">Tableau de bord</h1>
 		<div class="panel panel-default">
 		  <!-- Default panel contents -->
-		  			<div class="panel-heading">R�capitulatif des cours</div>
+		  
+		  
+		  			<div class="panel-heading">Recapitulatif des cours</div>
+
 
 			<!-- Table -->
 			<div class="well">
@@ -25,7 +31,7 @@
 				<table class="table table-striped table-bordered">
 					<tr>
 						<th>Liste de tous les cours &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button>S'inscrire</button></th>
-						<th>Liste des cours suivis &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button>Se d�sinscrire</button></th>
+						<th>Liste des cours suivis &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button>Se desinscrire</button></th>
 					</tr>
 						<tr>
 							<td>
@@ -34,26 +40,29 @@
 							<th>Intitule </th>
 							<th>Inscription</th>
 						</tr>
-						<tr id="14">
-						
-							<td>Cours 1</td>
-							<td><input type="checkbox"></td>
-						</tr>
+						<% 
+java.util.List<Course> list = (java.util.List<Course>)  request.getAttribute("courseList");
+for(Course course : list) {
+	
+	%>
+
 						<tr>
-							<td>Cours 2</td>
+							<td><%=course.getNameCourse() %> </td>
 							<td><input type="checkbox"></td>
+							<!-- <td><input type="checkbox" onclick="AjoutCours()"></td>  -->
 						</tr>
-						<tr id="cours3">
-							<td>Cours 3</td>
-							<td><input type="checkbox" onclick="AjoutCours()"></td>
-						</tr>
+
+<%
+}
+	%>
+						
 					</table>
 					</td>
 							<td>
 					<table class="table">
 						<tr>
-							<th>Intitul�</th>
-							<th>D�sinscription</th>
+							<th>Intitule</th>
+							<th>Desinscription</th>
 						</tr>
 						<tr>
 							<td>Cours 4</td>
@@ -128,7 +137,7 @@
 <!-- 		</div> -->
 		
 <!-- 		<div> -->
-<!-- 			<button>Se d�sinscrire</button> -->
+<!-- 			<button>Se desinscrire</button> -->
 <!-- 		</div> -->
 		
 		
