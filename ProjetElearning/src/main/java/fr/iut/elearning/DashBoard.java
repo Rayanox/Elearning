@@ -1,11 +1,20 @@
 package fr.iut.elearning;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.wimpi.telnetd.io.terminal.ansi;
+
+import org.codehaus.jackson.map.util.JSONPObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,18 +100,35 @@ public class DashBoard {
 	}
 
 	@RequestMapping(value = "/teacherNextCourse", method = RequestMethod.GET)
-	public String getTeacherNextCourse(Locale locale, Model model,
+	public @ResponseBody JSONObject getTeacherNextCourse(Locale locale, Model model,
 			HttpServletResponse response, HttpSession session) {
 				
 		session.setAttribute("sessionBean", sessionBean);
 
-		if (!Login.VerificationAccesPage(sessionBean, statusController))
-			return "NonAutorise";
-
-		CoursePlanning course = coursePlanningService.findTeacherNextCourseById(sessionBean.getId());
-		 model.addAttribute("id", course.getSessionDate());
+		List<CoursePlanning> coursePlanning = coursePlanningService.findTeacherNextCourseById(sessionBean.getId());
 		
-		return "profDashBoard";
+		DateFormat df = new SimpleDateFormat("dd/MM/yyy");
+		
+		JSONObject jobject = new JSONObject();
+		jobject.put("coursePlanning", coursePlanning.get(0));
+		jobject.put("date", df.format(coursePlanning.get(0).getSessionDate()));
+		return jobject;
+	}
+	
+	@RequestMapping(value = "/teacherNextAssessment", method = RequestMethod.GET)
+	public @ResponseBody JSONObject getTeacherNextAssessment(Locale locale, Model model,
+			HttpServletResponse response, HttpSession session) {
+				
+		session.setAttribute("sessionBean", sessionBean);
+
+		List<CoursePlanning> coursePlanning = coursePlanningService.findTeacherNextAssessmentById(sessionBean.getId());
+		
+		DateFormat df = new SimpleDateFormat("dd/MM/yyy");
+		
+		JSONObject jobject = new JSONObject();
+		jobject.put("coursePlanning", coursePlanning.get(0));
+		jobject.put("date", df.format(coursePlanning.get(0).getSessionDate()));
+		return jobject;
 	}
 	
 	@RequestMapping(value = "/getCourse", method = RequestMethod.GET)
@@ -120,5 +146,51 @@ public class DashBoard {
 		session.setAttribute("session", sessionBean);
 		List<Room> rooms = roomService.findAll();
 		return rooms;
+	}
+	
+	@RequestMapping(value = "/getTeacherCourses", method = RequestMethod.GET)
+	public @ResponseBody JSONObject getTeacherCourses(Locale locale, Model model, HttpSession session){
+		
+		session.setAttribute("sessionBean", sessionBean);
+		
+		List<CoursePlanning> coursesPlanning = coursePlanningService.findTeacherNextCourseById(sessionBean.getId());
+		
+		JSONObject jsonObject = new JSONObject();
+		
+		
+		for (int i = 0; i < coursesPlanning.size(); i++) {
+			Course course = courseService.findById(coursesPlanning.get(i).getCourseId());
+			Room room = roomService.findById(coursesPlanning.get(i).getRoomId());
+			List<Object> listObj = new ArrayList<Object>();
+			listObj.add(course);
+			listObj.add(room);
+			listObj.add(coursesPlanning.get(i));
+			jsonObject.put(i, listObj);
+		}
+		
+		return jsonObject;
+	}
+	
+	@RequestMapping(value = "/getTeacherAssessment", method = RequestMethod.GET)
+	public @ResponseBody JSONObject getTeacherAssessment(Locale locale, Model model, HttpSession session){
+		
+		session.setAttribute("sessionBean", sessionBean);
+		
+		List<CoursePlanning> coursesPlanning = coursePlanningService.findTeacherNextAssessmentById(sessionBean.getId());
+		
+		JSONObject jsonObject = new JSONObject();
+		
+		
+		for (int i = 0; i < coursesPlanning.size(); i++) {
+			Course course = courseService.findById(coursesPlanning.get(i).getCourseId());
+			Room room = roomService.findById(coursesPlanning.get(i).getRoomId());
+			List<Object> listObj = new ArrayList<Object>();
+			listObj.add(course);
+			listObj.add(room);
+			listObj.add(coursesPlanning.get(i));
+			jsonObject.put(i, listObj);
+		}
+		
+		return jsonObject;
 	}
 }
