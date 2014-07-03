@@ -27,29 +27,28 @@ import fr.iut.elearning.service.CoursePlanningService;
  */
 @Controller
 public class Control {
-
-	private static final Logger logger = LoggerFactory
-			.getLogger(HomeController.class);
+	
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	private final Status statusController = Status.Inscrit;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-
+	
 	@Autowired
-	public SessionBean sessionBean;
-
+    public SessionBean sessionBean;
+	
 	@Autowired
 	private CoursePlanningService coursePlanningService;
-
+	
 	@RequestMapping(value = "/Control", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-
+		
 		session.setAttribute("sessionBean", sessionBean);
 
-		if (!Login.VerificationAccesPage(sessionBean, statusController))
+		if(!Login.VerificationAccesPage(sessionBean, statusController))
 			return "NonAutorise";
-
+		
 		Status statusSession = sessionBean.getStatus();
 		return statusSession.equals(Status.Etudiant) ? "control" : "profExam";
 	}

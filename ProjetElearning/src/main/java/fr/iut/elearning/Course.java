@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import fr.iut.elearning.model.CoursePlanning;
 import fr.iut.elearning.model.SessionBean;
 import fr.iut.elearning.model.Status;
+import fr.iut.elearning.model.StudentInAssessment;
+import fr.iut.elearning.model.StudentInCourse;
 import fr.iut.elearning.service.CoursePlanningService;
+import fr.iut.elearning.service.StudentInAssessmentService;
+import fr.iut.elearning.service.StudentInCourseService;
 
 /**
  * Handles requests for the professor EDT page.
@@ -41,6 +44,10 @@ public class Course {
 
 	@Autowired
 	private CoursePlanningService coursePlanningService;
+	@Autowired
+	private StudentInCourseService courseService;
+	@Autowired
+	private StudentInAssessmentService assessmentService;
 
 	@RequestMapping(value = "/Course", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpSession session) {
@@ -53,6 +60,38 @@ public class Course {
 
 		Status statusSession = sessionBean.getStatus();
 		return statusSession.equals(Status.Etudiant) ? "course" : "profCourse";
+	}
+
+	@RequestMapping(value = "/addCourseStudent", method = RequestMethod.POST)
+	public String CourseStudent(Locale locale, Model model,
+			@RequestParam int course, HttpSession session) {
+
+		session.setAttribute("sessionBean", sessionBean);
+
+		StudentInCourse courseStudent = new StudentInCourse();
+
+		courseStudent.setStudentId(sessionBean.getId());
+		courseStudent.setCourseId(course);
+
+		courseService.create(courseStudent);
+
+		return "course";
+	}
+
+	@RequestMapping(value = "/addEvalStudent", method = RequestMethod.POST)
+	public String EvalStudent(Locale locale, Model model,
+			@RequestParam int eval, HttpSession session) {
+
+		session.setAttribute("sessionBean", sessionBean);
+
+		StudentInAssessment assessmentStudent = new StudentInAssessment();
+
+		assessmentStudent.setStudentId(sessionBean.getId());
+		assessmentStudent.setCourseId(eval);
+
+		assessmentService.create(assessmentStudent);
+
+		return "course";
 	}
 
 	@RequestMapping(value = "/addCourse", method = RequestMethod.POST)

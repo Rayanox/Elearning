@@ -3,15 +3,13 @@ package fr.iut.elearning;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.codehaus.jackson.map.util.JSONPObject;
-import org.json.simple.JSONArray;
+
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -104,22 +102,6 @@ public class DashBoard {
 		session.setAttribute("sessionBean", sessionBean);
 
 		List<CoursePlanning> coursePlanning = coursePlanningService.findTeacherNextCourseById(sessionBean.getId());
-		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyy");
-		
-		JSONObject jobject = new JSONObject();
-		jobject.put("coursePlanning", coursePlanning.get(0));
-		jobject.put("date", df.format(coursePlanning.get(0).getSessionDate()));
-		return jobject;
-	}
-	
-	@RequestMapping(value = "/teacherNextAssessment", method = RequestMethod.GET)
-	public @ResponseBody JSONObject getTeacherNextAssessment(Locale locale, Model model,
-			HttpServletResponse response, HttpSession session) {
-				
-		session.setAttribute("sessionBean", sessionBean);
-
-		List<CoursePlanning> coursePlanning = coursePlanningService.findTeacherNextAssessmentById(sessionBean.getId());
 		
 		DateFormat df = new SimpleDateFormat("dd/MM/yyy");
 		

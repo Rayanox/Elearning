@@ -12,5 +12,5 @@ public interface CoursePlanningService {
 	public CoursePlanning update(CoursePlanning coursePlanning);
 	public CoursePlanning findById(int id);
 	public List<CoursePlanning> findTeacherNextCourseById(int teacherId);
-	public List<CoursePlanning> findTeacherNextAssessmentById(int teacherId);
+	public List<CoursePlanning> findTeacherNextAssessmentById(int id);
 }
