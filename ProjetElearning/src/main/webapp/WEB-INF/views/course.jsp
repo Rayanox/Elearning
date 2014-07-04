@@ -1,3 +1,4 @@
+<%@page import="fr.iut.elearning.model.Course"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,28 +26,22 @@
 			<table class="table">
 				<tr>
 					<th>Titre</th>
-					<th>Descriptif</th>
 					<th>Présentiel</th>
-					<th>En ligne</th>
 				</tr>
+				<% 
+java.util.List<Course> listRegistred = (java.util.List<Course>)  request.getAttribute("listCourseRegistred");
+for(Course course : listRegistred) {
+	
+	%>
 				<tr>
-					<td>cours1</td>
-					<td>résumé du cours</td>
-					<td>non</td>
-					<td><input type="checkbox" name="idbox"></td>
-				</tr>
-				<tr>
-					<td>cours2</td>
-					<td>résumé du cours</td>
+					<td><%=course.getNameCourse() %></td>
 					<td>oui</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>Cours3</td>
-					<td>résumé du cours</td>
-					<td>non</td>
 					<td><input type="checkbox" name="idbox"></td>
 				</tr>
+				<%
+}
+	%>
+				
 			</table>
 		</div>
 

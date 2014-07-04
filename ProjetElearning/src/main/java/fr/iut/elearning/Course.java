@@ -2,6 +2,8 @@ package fr.iut.elearning;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,15 +18,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import fr.iut.elearning.model.CoursePlanning;
 import fr.iut.elearning.model.SessionBean;
 import fr.iut.elearning.model.Status;
+import fr.iut.elearning.model.Student;
 import fr.iut.elearning.model.StudentInAssessment;
 import fr.iut.elearning.model.StudentInCourse;
 import fr.iut.elearning.service.CoursePlanningService;
+import fr.iut.elearning.service.CourseService;
 import fr.iut.elearning.service.StudentInAssessmentService;
 import fr.iut.elearning.service.StudentInCourseService;
+import fr.iut.elearning.service.StudentService;
 
 /**
  * Handles requests for the professor EDT page.
@@ -49,17 +55,60 @@ public class Course {
 	@Autowired
 	private StudentInAssessmentService assessmentService;
 
+	@Autowired
+	private StudentInCourseService studentInCourseService;
+	
+
+	@Autowired
+	private StudentService studentService;
+	
+	@Autowired
+	private CourseService courseStudentService;
+
 	@RequestMapping(value = "/Course", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, HttpSession session) {
+	public ModelAndView home(Locale locale, Model model, HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		session.setAttribute("sessionBean", sessionBean);
+		Status statusSession = sessionBean.getStatus();
 
 		if (!Login.VerificationAccesPage(sessionBean, statusController))
-			return "NonAutorise";
+			return new ModelAndView("NonAutorise");
 
-		Status statusSession = sessionBean.getStatus();
-		return statusSession.equals(Status.Etudiant) ? "course" : "profCourse";
+		ModelAndView mav = new ModelAndView(statusSession.equals(Status.Etudiant) ? "course" : "profCourse");
+		
+if(statusSession.equals(Status.Etudiant)) {
+			
+			java.util.List<fr.iut.elearning.model.Course> courseList = courseStudentService.findAll();
+			mav.addObject("courseList", courseList);
+			
+			Student currentStudent = studentService.findById(sessionBean.getId());
+			
+			List<StudentInCourse> studentInCourseList = studentInCourseService.findAll();
+			
+			List<fr.iut.elearning.model.Course> listCourseRegistred = new ArrayList<fr.iut.elearning.model.Course>();
+			List<Integer>listcourseIdsInStudentInCourseForStudent = new ArrayList<Integer>();
+			
+			for (StudentInCourse studentInCourse : studentInCourseList) {
+				if(studentInCourse.getStudentId() == currentStudent.getIdUser())
+					listcourseIdsInStudentInCourseForStudent.add(studentInCourse.getCourseId());
+			}
+			
+			
+			
+			for (fr.iut.elearning.model.Course course : courseList) {
+				System.out.println(course.getNameCourse());
+				if(listcourseIdsInStudentInCourseForStudent.contains(course.getId()))
+					listCourseRegistred.add(course);
+				
+				
+			}
+			mav.addObject("listCourseRegistred", listCourseRegistred);
+			return mav;
+		}
+		
+		
+		return mav;
 	}
 
 	@RequestMapping(value = "/addCourseStudent", method = RequestMethod.POST)
@@ -72,10 +121,10 @@ public class Course {
 
 		courseStudent.setStudentId(sessionBean.getId());
 		courseStudent.setCourseId(course);
-
+				
 		courseService.create(courseStudent);
 
-		return "course";
+		return "redirect:Course";
 	}
 
 	@RequestMapping(value = "/addEvalStudent", method = RequestMethod.POST)

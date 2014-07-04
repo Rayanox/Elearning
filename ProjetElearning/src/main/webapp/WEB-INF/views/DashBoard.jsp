@@ -30,16 +30,18 @@
 			
 				<table class="table table-striped table-bordered">
 					<tr>
-						<th>Liste de tous les cours &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button>S'inscrire</button></th>
-						<th>Liste des cours suivis &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button>Se desinscrire</button></th>
+						<th>Liste de tous les cours </th>
+						<th>Liste des cours suivis </th>
 					</tr>
 						<tr>
 							<td>
 					<table class="table">
 						<tr>
 							<th>Intitule </th>
-							<th>Inscription</th>
 						</tr>
+
+
+
 						<% 
 java.util.List<Course> list = (java.util.List<Course>)  request.getAttribute("courseList");
 for(Course course : list) {
@@ -48,13 +50,15 @@ for(Course course : list) {
 
 						<tr>
 							<td><%=course.getNameCourse() %> </td>
-							<td><input type="checkbox"></td>
 							<!-- <td><input type="checkbox" onclick="AjoutCours()"></td>  -->
 						</tr>
 
 <%
 }
 	%>
+
+
+
 						
 					</table>
 					</td>
@@ -62,20 +66,20 @@ for(Course course : list) {
 					<table class="table">
 						<tr>
 							<th>Intitule</th>
-							<th>Desinscription</th>
 						</tr>
+						<% 
+java.util.List<Course> listRegistred = (java.util.List<Course>)  request.getAttribute("listCourseRegistred");
+for(Course course : listRegistred) {
+	
+	%>
 						<tr>
-							<td>Cours 4</td>
-							<td><input type="checkbox"></td>
+							<td><%=course.getNameCourse() %> </td>
+							<!-- <td><input type="checkbox" onclick="AjoutCours()"></td>  -->
 						</tr>
-						<tr>
-							<td>Cours 5</td>
-							<td><input type="checkbox"></td>
-						</tr>
-						<tr>
-							<td>Cours 6</td>
-							<td><input type="checkbox"></td>
-						</tr>
+						<%
+}
+	%>
+						
 					</table>
 					</td>
 						</tr>

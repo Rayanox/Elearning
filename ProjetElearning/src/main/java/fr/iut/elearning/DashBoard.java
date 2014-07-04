@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
+
+
+
+
+
+
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,12 +33,18 @@ import fr.iut.elearning.model.CoursePlanning;
 import fr.iut.elearning.model.Room;
 import fr.iut.elearning.model.SessionBean;
 import fr.iut.elearning.model.Status;
+import fr.iut.elearning.model.StudentInCourse;
+import fr.iut.elearning.model.Student;
 import fr.iut.elearning.model.Subject;
 import fr.iut.elearning.model.Teacher;
 import fr.iut.elearning.model.User;
 import fr.iut.elearning.service.CoursePlanningService;
 import fr.iut.elearning.service.CourseService;
 import fr.iut.elearning.service.RoomService;
+import fr.iut.elearning.service.StudentInCourseService;
+import fr.iut.elearning.service.StudentInCourseServiceImpl;
+import fr.iut.elearning.service.StudentService;
+import fr.iut.elearning.service.StudentServiceImpl;
 import fr.iut.elearning.service.SubjectService;
 import fr.iut.elearning.service.TeacherService;
 
@@ -60,25 +72,27 @@ public class DashBoard {
 	
 	@Autowired
 	private RoomService roomService;
+	
+	@Autowired
+	private StudentService studentService;
 
 	@Autowired
-	public DashBoard(TeacherService teacherService) {
+	private StudentInCourseService studentInCourseService;
+/*
+	@Autowired
+	public DashBoard(TeacherService teacherService, CourseService courseService, RoomService roomService, CoursePlanningService coursePlanningService) {
+		this.teacherService = teacherService;
+		this.roomService = roomService;
+		this.courseService = courseService;
+		this.coursePlanningService = coursePlanningService;
+	}*/
+	
+	@Autowired
+	public DashBoard(TeacherService teacherService){
 		this.teacherService = teacherService;
 	}
 	
-	@Autowired
-	public DashBoard(RoomService roomService) {
-		this.roomService = roomService;
-	}
-
-	@Autowired
-	public DashBoard(CourseService courseService) {
-		this.courseService = courseService;
-	}
-
-	public DashBoard(CoursePlanningService coursePlanningService) {
-		this.coursePlanningService = coursePlanningService;
-	}
+	
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -102,12 +116,30 @@ public class DashBoard {
 			java.util.List<Course> courseList = courseService.findAll();
 			mav.addObject("courseList", courseList);
 			
+			Student currentStudent = studentService.findById(sessionBean.getId());
+			
+			List<StudentInCourse> studentInCourseList = studentInCourseService.findAll();
+			
+			List<Course> listCourseRegistred = new ArrayList<Course>();
+			List<Integer>listcourseIdsInStudentInCourseForStudent = new ArrayList<Integer>();
+			
+			for (StudentInCourse studentInCourse : studentInCourseList) {
+				if(studentInCourse.getStudentId() == currentStudent.getIdUser())
+					listcourseIdsInStudentInCourseForStudent.add(studentInCourse.getCourseId());
+			}
+			
+			
+			
 			for (Course course : courseList) {
 				System.out.println(course.getNameCourse());
+				if(listcourseIdsInStudentInCourseForStudent.contains(course.getId()))
+					listCourseRegistred.add(course);
+				
 				
 			}
+			mav.addObject("listCourseRegistred", listCourseRegistred);
+			return mav;
 		}
-		
 		return mav;
 	}
 

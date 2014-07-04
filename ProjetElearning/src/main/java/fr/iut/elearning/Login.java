@@ -87,7 +87,7 @@ public class Login {
 		}
 
 		if (connected) {
-			return "DashBoard";
+			return "redirect:DashBoard";
 		}else {
 			return "login";
 		}

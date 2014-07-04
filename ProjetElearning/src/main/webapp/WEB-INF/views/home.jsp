@@ -23,7 +23,7 @@
 
 	
 	<div class="container" style="">
-		<p>Bienvenue ! Vous venez d'arriver sur le meilleur site d'e-learning qu'il existe en Europe. Il a été conçu par les meilleurs élèves dans le domaine : Camille, Rayane, Hussam, Boris !</p>
+		<p>Bienvenue ! Vous venez d'arriver sur le meilleur site d'e-learning qui existe en Europe. Il a été conçu par les meilleurs élèves dans le domaine : Camille, Rayane, Hussam, Boris !</p>
 	</div>
 
 </body>

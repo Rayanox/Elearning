@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.iut.elearning.dao.StudentDao;
-import fr.iut.elearning.model.StudentModel;
+import fr.iut.elearning.model.Student;
 
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -18,15 +18,15 @@ public class StudentServiceImpl implements StudentService{
 	
 	@Override
 	@Transactional
-	public StudentModel create(StudentModel student) {
-		StudentModel createdStudent = student;
+	public Student create(Student student) {
+		Student createdStudent = student;
 		return studentDao.save(createdStudent);
 	}
 
 	@Override
 	@Transactional
-	public StudentModel delete(int id) {
-		StudentModel deletedStudent = studentDao.findOne(id);
+	public Student delete(int id) {
+		Student deletedStudent = studentDao.findOne(id);
 
 		studentDao.delete(deletedStudent);
 		return deletedStudent;
@@ -34,14 +34,14 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	@Transactional
-	public List<StudentModel> findAll() {
+	public List<Student> findAll() {
 		return studentDao.findAll();
 	}
 
 	@Override
 	@Transactional
-	public StudentModel update(StudentModel student) {
-		StudentModel updatedStudent= studentDao.findOne(student.getId());
+	public Student update(Student student) {
+		Student updatedStudent= studentDao.findOne(student.getId());
 
 		updatedStudent.setFirstName(student.getFirstName());
 		updatedStudent.setLastName(student.getLastName());
@@ -50,7 +50,7 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	@Transactional
-	public StudentModel findById(int id) {
+	public Student findById(int id) {
 		return studentDao.findOne(id);
 	}
 

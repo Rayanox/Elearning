@@ -11,6 +11,9 @@ import java.util.Locale;
 
 import org.json.simple.JSONObject;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
@@ -24,13 +27,14 @@ import fr.iut.elearning.service.CourseService;
 import fr.iut.elearning.service.RoomService;
 import fr.iut.elearning.service.TeacherService;
 
+@RunWith(MockitoJUnitRunner.class)
 public class DashBoardTest {
 
+	@Mock TeacherService teacherService;
 	
 	@Test
-	public void testTeacherById() {
+	public void testGetTeacherById() {
 
-		TeacherService teacherService = mock(TeacherService.class);
 
 		when(teacherService.findById(1)).thenReturn(
 				new Teacher(1, "Chuck", "Norris"));
@@ -49,7 +53,7 @@ public class DashBoardTest {
 		assertEquals("matching Name", "Chuck", teacher.getFirstName());
 
 	}
-
+/*
 	@Test
 	public void testGetRooms() {
 
@@ -100,6 +104,6 @@ public class DashBoardTest {
 
 		assertEquals("matching ID", 1, result.get(0).getId());
 		assertEquals("matching Name", "Maths", result.get(0).getNameCourse());
-	}
+	}*/
 
 }

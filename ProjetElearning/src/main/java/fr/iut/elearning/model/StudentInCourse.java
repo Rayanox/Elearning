@@ -17,6 +17,7 @@ public class StudentInCourse {
 	
 	@Column(name = "course_id")
 	private int courseId;
+	
 
 	public int getId() {
 		return id;
@@ -30,6 +31,7 @@ public class StudentInCourse {
 		return studentId;
 	}
 
+	
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
